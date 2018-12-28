@@ -81,7 +81,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="iko">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/算法/index.html">
 <meta property="og:site_name" content="iko">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -115,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/tags/算法/">
 
 
 
 
 
-  <title>iko</title>
+  <title>标签: -算法 | iko</title>
   
 
 
@@ -140,8 +140,7 @@
     
   
 
-  <div class="container sidebar-position-right 
-  page-home">
+  <div class="container sidebar-position-right ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -276,301 +275,51 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
+
+  
+  
+  
+  <div class="post-block tag">
+
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>-算法<small>标签</small>
+        </h1>
+      </div>
+
       
-
-  
-
-  
-  
-  
+        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/28/七大排序算法/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="魏钰冰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="iko">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/12/28/七大排序算法/" itemprop="url">
+              
+                <span itemprop="name">七大排序算法</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/28/七大排序算法/" itemprop="url">七大排序算法</a></h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-28T10:30:43+08:00">
-                2018-12-28
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2018-12-28T10:30:43+08:00" content="2018-12-28">
+          12-28
+        </time>
+      </div>
 
-            
+    </header>
+  </article>
 
-            
-          </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>这还是一个从大一(?)就开始学的最最最简单的排序算法。<br><br>遍历数组一次性比较两个数值，如果他们排列顺序错误就将他们交换过来。</p>
-<p>算法步骤（从小到大排序）：</p>
-<ul>
-<li>从数组的第一个数开始，比较相邻的元素，如果前一个比后一个大，就将他们两个交换</li>
-<li>每一轮冒泡结束后，本轮冒泡最大的数都将在数组能遍历到的最后一位，重复上一个步骤</li>
-</ul>
-<p>稳定性：稳定排序</p>
-<p>时间复杂度：O(n^2)</p>
-<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;&lt;<span class="keyword">int</span>&gt; &amp;&amp;v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; v.size(); i++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ;j&lt;v.size()-i ;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>( v[j] &gt; v[j+<span class="number">1</span>] )         <span class="comment">//将排序错误的两个数字交换位置</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = v[j];</span><br><span class="line">                v[j] = v[j+<span class="number">1</span>];</span><br><span class="line">                v[j+<span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>也是一种超简单的排序算法。</p>
-<p>在未排序的序列中找到最小（大）元素，存放已排序数列的末尾位置。</p>
-<p>算法步骤（从大到小排序）：</p>
-<ul>
-<li>第i次操作时，在数组v[i——n]中找出最大值，放在v[i]的位置上</li>
-<li>操作n-1次排序完成</li>
-</ul>
-<p>稳定性：稳定排序</p>
-<p>时间复杂度：O(n^2)</p>
-<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selection_sort</span><span class="params">(<span class="built_in">vector</span>&lt;&lt;<span class="keyword">int</span>&gt; &amp;&amp;v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ;i &lt;v.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> flag=i,temp=v[i];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>; j&lt;v.size();j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(v[j] &gt; temp)</span><br><span class="line">                flag = j,temp =v[j];        <span class="comment">//找到最大值，记录最大值的下标</span></span><br><span class="line">        &#125;</span><br><span class="line">        v[flag] = v[i];</span><br><span class="line">        v[i] = temp;                       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>一种简单直观的排序算法。</p>
-<p>它通过构建一个有序数列，将未排序的数据有序的插入有序数列中。</p>
-<p>算法步骤（从小到大排序）</p>
-<ul>
-<li>第一个数字是有序的</li>
-<li>第i此操作，取出v[i]元素，遍历v[1——i],将第i个元素插入到j和k之间的位置，要求v[j]&lt;=v[i]且v[i]&lt;=v[k];</li>
-<li>操作n次后数组有序</li>
-</ul>
-<p>稳定性：稳定排序</p>
-<p>时间复杂度：O(n^2)</p>
-<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertion_sort</span><span class="params">(<span class="built_in">vector</span>&lt;&lt;<span class="keyword">int</span>&gt; &amp;&amp;v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i &lt;v.size ;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>( index&lt;&lt;i &amp;&amp;&amp; v[index]&lt;=v[i]) index++;    <span class="comment">//找到合适的插入位置</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&gt;=index;j--)     <span class="comment">//将插入位置及以后的元素向后移动</span></span><br><span class="line">            v[j] = v[j<span class="number">-1</span>];</span><br><span class="line">        v[index] = v[i];            <span class="comment">//将v[i]插入合适的位置</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>###未完待续</p>
-
-          
-        
       
     </div>
-    
-    
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
   
   
   
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/25/HELLO-iko/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="魏钰冰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="iko">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/25/HELLO-iko/" itemprop="url">HELLO iko!</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T22:04:53+08:00">
-                2018-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="HELLO！"><a href="#HELLO！" class="headerlink" title="HELLO！"></a>HELLO！</h1><p>想搭博客好久啦，今天终于开始啦<br>冲鸭！快乐！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
 
   
 

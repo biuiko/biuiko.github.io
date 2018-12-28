@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="-算法,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="iko">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="冒泡排序这还是一个从大一(?)就开始学的最最最简单的排序算法。遍历数组一次性比较两个数值，如果他们排列顺序错误就将他们交换过来。 算法步骤（从小到大排序）：  从数组的第一个数开始，比较相邻的元素，如果前一个比后一个大，就将他们两个交换 每一轮冒泡结束后，本轮冒泡最大的数都将在数组能遍历到的最后一位，重复上一个步骤  稳定性：稳定排序 时间复杂度：O(n^2) 代码如下：1234567891011">
+<meta name="keywords" content="-算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="七大排序算法">
+<meta property="og:url" content="http://yoursite.com/2018/12/28/七大排序算法/index.html">
 <meta property="og:site_name" content="iko">
+<meta property="og:description" content="冒泡排序这还是一个从大一(?)就开始学的最最最简单的排序算法。遍历数组一次性比较两个数值，如果他们排列顺序错误就将他们交换过来。 算法步骤（从小到大排序）：  从数组的第一个数开始，比较相邻的元素，如果前一个比后一个大，就将他们两个交换 每一轮冒泡结束后，本轮冒泡最大的数都将在数组能遍历到的最后一位，重复上一个步骤  稳定性：稳定排序 时间复杂度：O(n^2) 代码如下：1234567891011">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-28T05:20:33.577Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iko">
+<meta name="twitter:title" content="七大排序算法">
+<meta name="twitter:description" content="冒泡排序这还是一个从大一(?)就开始学的最最最简单的排序算法。遍历数组一次性比较两个数值，如果他们排列顺序错误就将他们交换过来。 算法步骤（从小到大排序）：  从数组的第一个数开始，比较相邻的元素，如果前一个比后一个大，就将他们两个交换 每一轮冒泡结束后，本轮冒泡最大的数都将在数组能遍历到的最后一位，重复上一个步骤  稳定性：稳定排序 时间复杂度：O(n^2) 代码如下：1234567891011">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/28/七大排序算法/">
 
 
 
 
 
-  <title>iko</title>
+  <title>七大排序算法 | iko</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-right 
-  page-home">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -276,9 +280,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -308,9 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/28/七大排序算法/" itemprop="url">七大排序算法</a></h1>
+          <h1 class="post-title" itemprop="name headline">七大排序算法</h1>
         
 
         <div class="post-meta">
@@ -382,9 +384,7 @@
       
 
       
-        
-          
-            <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>这还是一个从大一(?)就开始学的最最最简单的排序算法。<br><br>遍历数组一次性比较两个数值，如果他们排列顺序错误就将他们交换过来。</p>
+        <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>这还是一个从大一(?)就开始学的最最最简单的排序算法。<br><br>遍历数组一次性比较两个数值，如果他们排列顺序错误就将他们交换过来。</p>
 <p>算法步骤（从小到大排序）：</p>
 <ul>
 <li>从数组的第一个数开始，比较相邻的元素，如果前一个比后一个大，就将他们两个交换</li>
@@ -416,8 +416,6 @@
 <p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertion_sort</span><span class="params">(<span class="built_in">vector</span>&lt;&lt;<span class="keyword">int</span>&gt; &amp;&amp;v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i &lt;v.size ;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>( index&lt;&lt;i &amp;&amp;&amp; v[index]&lt;=v[i]) index++;    <span class="comment">//找到合适的插入位置</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&gt;=index;j--)     <span class="comment">//将插入位置及以后的元素向后移动</span></span><br><span class="line">            v[j] = v[j<span class="number">-1</span>];</span><br><span class="line">        v[index] = v[i];            <span class="comment">//将v[i]插入合适的位置</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>###未完待续</p>
 
-          
-        
       
     </div>
     
@@ -432,134 +430,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/25/HELLO-iko/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="魏钰冰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="iko">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/25/HELLO-iko/" itemprop="url">HELLO iko!</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T22:04:53+08:00">
-                2018-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/算法/" rel="tag"># -算法</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="HELLO！"><a href="#HELLO！" class="headerlink" title="HELLO！"></a>HELLO！</h1><p>想搭博客好久啦，今天终于开始啦<br>冲鸭！快乐！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/25/HELLO-iko/" rel="next" title="HELLO iko!">
+                <i class="fa fa-chevron-left"></i> HELLO iko!
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -569,10 +469,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -580,6 +481,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -600,8 +505,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -663,6 +577,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">3.</span> <span class="nav-text">插入排序</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -803,6 +733,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
