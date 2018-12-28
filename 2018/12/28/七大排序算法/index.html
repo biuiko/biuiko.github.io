@@ -82,14 +82,14 @@
 <meta name="description" content="冒泡排序这还是一个从大一(?)就开始学的最最最简单的排序算法。遍历数组一次性比较两个数值，如果他们排列顺序错误就将他们交换过来。 算法步骤（从小到大排序）：  从数组的第一个数开始，比较相邻的元素，如果前一个比后一个大，就将他们两个交换 每一轮冒泡结束后，本轮冒泡最大的数都将在数组能遍历到的最后一位，重复上一个步骤  稳定性：稳定排序 时间复杂度：O(n^2) 代码如下：1234567891011">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="七大排序算法">
+<meta property="og:title" content="七个常见排序算法">
 <meta property="og:url" content="http://yoursite.com/2018/12/28/七大排序算法/index.html">
 <meta property="og:site_name" content="iko">
 <meta property="og:description" content="冒泡排序这还是一个从大一(?)就开始学的最最最简单的排序算法。遍历数组一次性比较两个数值，如果他们排列顺序错误就将他们交换过来。 算法步骤（从小到大排序）：  从数组的第一个数开始，比较相邻的元素，如果前一个比后一个大，就将他们两个交换 每一轮冒泡结束后，本轮冒泡最大的数都将在数组能遍历到的最后一位，重复上一个步骤  稳定性：稳定排序 时间复杂度：O(n^2) 代码如下：1234567891011">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-28T10:56:58.574Z">
+<meta property="og:updated_time" content="2018-12-28T11:28:44.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="七大排序算法">
+<meta name="twitter:title" content="七个常见排序算法">
 <meta name="twitter:description" content="冒泡排序这还是一个从大一(?)就开始学的最最最简单的排序算法。遍历数组一次性比较两个数值，如果他们排列顺序错误就将他们交换过来。 算法步骤（从小到大排序）：  从数组的第一个数开始，比较相邻的元素，如果前一个比后一个大，就将他们两个交换 每一轮冒泡结束后，本轮冒泡最大的数都将在数组能遍历到的最后一位，重复上一个步骤  稳定性：稳定排序 时间复杂度：O(n^2) 代码如下：1234567891011">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>七大排序算法 | iko</title>
+  <title>七个常见排序算法 | iko</title>
   
 
 
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">七大排序算法</h1>
+          <h1 class="post-title" itemprop="name headline">七个常见排序算法</h1>
         
 
         <div class="post-meta">
@@ -437,7 +437,17 @@
 </ul>
 <p>稳定性：不稳定的排序</p>
 <p>时间复杂度：O（nlogn——n^2），平均复杂度为O(nlogn)</p>
-<div class="spoiler collapsed"><div class="spoiler-title">显示代码</div><div class="spoiler-content"><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!–￼<span class="number">4</span>–&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></div>
+<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="built_in">vector</span>&lt;&lt;<span class="keyword">int</span>&gt; &amp;&amp;v,<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(high&lt;=low) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> left = low, right = high;</span><br><span class="line">    <span class="keyword">int</span> key = v[left]   <span class="comment">//将最左端端点作为基准</span></span><br><span class="line">    <span class="keyword">while</span>(left != right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>( left&lt;&lt;right &amp;&amp;&amp; v[right] &gt;= key) <span class="comment">//从后向前找到第一个小于key的数字的位置</span></span><br><span class="line">            right--;</span><br><span class="line">        v[left] = v[right];</span><br><span class="line">        <span class="keyword">while</span>(left &lt;&lt; right &amp;&amp;&amp; v[left] &lt;=key)<span class="comment">//从前向后找到第一个大于key的数字的位置</span></span><br><span class="line">            left ++;</span><br><span class="line">        v[right] = v[left];</span><br><span class="line">    &#125;</span><br><span class="line">    v[left] = key ; <span class="comment">//把基准放在正确的位置上</span></span><br><span class="line">    quick_sort(v,low,left<span class="number">-1</span>);</span><br><span class="line">    quick_sort(v,left+<span class="number">1</span>,right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>我很少用这个排序，但在求逆序数的时候！如有神助！简直太好用了！我爱归并！<br>归并排序现将序列拆分成几个有序的子序列，再将子序列合并起来使序列有序。</p>
+<p>算法描述：</p>
+<ul>
+<li>将长度为n的序列分成长度为n/2的两个子序列</li>
+<li>若子序列无序则继续第一个步骤将该子序列分为两个子序列，知道子序列有序</li>
+<li>将排好序的两个子序列合并最后变成一个最终的排序序列</li>
+</ul>
+<p>稳定性：稳定排序</p>
+<p>时间复杂度：O(nlogn)</p>
+<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按从小到大合并</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;&lt;<span class="keyword">int</span>&gt; &amp;&amp;v , <span class="keyword">int</span> first ,<span class="keyword">int</span> mid ,<span class="keyword">int</span> last)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = first ,j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;&lt;<span class="keyword">int</span>&gt; temp;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid &amp;&amp;&amp; j&lt;=last)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&gt;a[j])</span><br><span class="line">            temp.push_back(a[j++]);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            temp.push_back(a[i++]);        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid)   temp.push_back(a[i++]);</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=last)  temp.push_back(a[j++]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; temp.size() ; i++)</span><br><span class="line">        v[first+i] = temp[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergesort</span><span class="params">(<span class="built_in">vector</span>&lt;&lt;<span class="keyword">int</span>&gt; &amp;&amp;v,<span class="keyword">int</span> first,<span class="keyword">int</span> last)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(first &lt; last)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (first+last)&gt;&gt;<span class="number">1</span> ;</span><br><span class="line">        mergesort(v , first , mid); <span class="comment">//使左半部分有序</span></span><br><span class="line">        mergesort(v , mid+<span class="number">1</span> , last);<span class="comment">//使右半部分有序</span></span><br><span class="line">        merge(v , first , mid , last);   <span class="comment">//将有序的左右部分合并</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
@@ -610,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">3.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序"><span class="nav-number">4.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">5.</span> <span class="nav-text">快速排序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">3.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序"><span class="nav-number">4.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">5.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">6.</span> <span class="nav-text">归并排序</span></a></li></ol></div>
             
 
           </div>
