@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="iko">
 <meta property="og:description" content="删点并查集，将原来的并查集中的一个点删去的操作就是删点并查集 操作方法因为并查集是树形结构，所以无法简单的把一个节点从一棵树中删去并维护原来的信息。那这里用到的思想就是还是保持原来的树的结构不变，只是把被删掉的那个点设为虚点，并新建一个点，把原来的点映射到这个新点上，代表以后的操作都是对这个新点进行操作。 伪代码int cnt=n ;    表示初始时并查集有n个节点  int index[] ；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-02T12:31:11.056Z">
+<meta property="og:updated_time" content="2019-01-02T12:36:30.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="删点并查集">
 <meta name="twitter:description" content="删点并查集，将原来的并查集中的一个点删去的操作就是删点并查集 操作方法因为并查集是树形结构，所以无法简单的把一个节点从一棵树中删去并维护原来的信息。那这里用到的思想就是还是保持原来的树的结构不变，只是把被删掉的那个点设为虚点，并新建一个点，把原来的点映射到这个新点上，代表以后的操作都是对这个新点进行操作。 伪代码int cnt=n ;    表示初始时并查集有n个节点  int index[] ；">
@@ -390,6 +390,9 @@
 <p>int index[] ； 如果想要访问i结点，则使用index[i]来访问</p>
 <p>如果要删去结点 k ,只需要： index[k] = ++cnt;</p>
 <p>这样就通过把要删去的点映射到一个新的节点上来完成了并查集的删点操作</p>
+<h3 id="胡七八说"><a href="#胡七八说" class="headerlink" title="胡七八说"></a>胡七八说</h3><p>第一次听到删点并查集的时候，想破了头也没想到要怎么实现。越想越偏越想越难。</p>
+<p>只要我看别人的博客看到了真正的删点并查集实现的时候，我&amp;……*%……&amp;…5%&amp;</p>
+<p>真是一个仁者见仁智者见智可爱又皮又很强的操作。</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
@@ -562,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作方法"><span class="nav-number">1.</span> <span class="nav-text">操作方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪代码"><span class="nav-number">2.</span> <span class="nav-text">伪代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作方法"><span class="nav-number">1.</span> <span class="nav-text">操作方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪代码"><span class="nav-number">2.</span> <span class="nav-text">伪代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#胡七八说"><span class="nav-number">3.</span> <span class="nav-text">胡七八说</span></a></li></ol></div>
             
 
           </div>
