@@ -4,7 +4,7 @@
             heart.onselectstart = new Function('event.returnValue=false');
             var flag = Math.random();
             if(flag > 0.5)
-                document.body.appendChild(heart).innerHTML = "<img src=\"images\\1.svg\"/>";
+                document.body.appendChild(heart).innerHTML = "<img src=\"\\image\\1.png\"/>";
             else
                 document.body.appendChild(heart).innerHTML = "iko";
 
