@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="iko">
 <meta property="og:description" content="树链剖分，一种对树进行划分的算法，它先通过轻重边剖分将树分为多条链。保证每个点属于且只属于一条链，然后再通过数据结构（树状数组、线段树等）来维护每一条链。它能巧妙地将树上信息映射到线性结构上（如套用线段树），应用广泛。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-04T06:13:30.441Z">
+<meta property="og:updated_time" content="2019-01-04T06:16:43.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树链剖分">
 <meta name="twitter:description" content="树链剖分，一种对树进行划分的算法，它先通过轻重边剖分将树分为多条链。保证每个点属于且只属于一条链，然后再通过数据结构（树状数组、线段树等）来维护每一条链。它能巧妙地将树上信息映射到线性结构上（如套用线段树），应用广泛。">
@@ -448,7 +448,67 @@
   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> rt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r) <span class="keyword">return</span> sum[rt];</span><br><span class="line">    pushdown(rt,r-l+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> mid = (l+r)&gt;&gt;<span class="number">1</span> , ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(p&lt;=mid) ans=query(p,l,mid,rt&lt;&lt;<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span> ans = query(p,mid+<span class="number">1</span>,r,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="hdu3966完整AC代码"><a href="#hdu3966完整AC代码" class="headerlink" title="hdu3966完整AC代码"></a>hdu3966完整AC代码</h3><div class="spoiler collapsed"><div class="spoiler-title">code</div><div class="spoiler-content">undefined
+<h3 id="hdu3966完整AC代码"><a href="#hdu3966完整AC代码" class="headerlink" title="hdu3966完整AC代码"></a>hdu3966完整AC代码</h3><div class="spoiler collapsed"><div class="spoiler-title">code</div><div class="spoiler-content"><p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;</p>
+<p>const int maxn = 50005;</p>
+<p>int camp[maxn],size[maxn],dep[maxn],son[maxn],top[maxn],fa[maxn],tree[maxn],rrank[maxn];<br>vector<int>G[maxn];<br>int cnt,n;<br>/<em><br>size[v] 表示以 v 为根的子树的节点数，<br>dep[v] 表示 v 的深度(根深度为1)，<br>top[v] 表示 v 所在的链的顶端节点，<br>fa[v] 表示 v 的父亲，<br>son[v] 表示与 v 在同一重链上的 v 的儿子节点（姑且称为 重儿子 ），<br>tree[v] 表示节点 v 在线段树中的编号，<br>rrank[v] 表示线段树中编号是 v 的节点所对应的原图中的点（与 tree 相反，互为反函数）<br>G存图<br>cnt 线段树分配节点
+</em>/<br>int col[maxn&lt;&lt;2],sum[maxn&lt;&lt;2];//线段树<br>// 把 fa、deep、size、son 求出来<br>void dfs1(int u,int pre,int d)<br>{<br>    size[u]=1;fa[u]=pre;dep[u]=d;<br>    for(int i =0 ; i&lt;G[u].size();i++)<br>    {<br>        int v=G[u][i];<br>        if(v==pre)    continue;<br>        dfs1(v,u,d+1);<br>        size[u]+=size[v];<br>        if(size[v]&gt;size[son[u]]||son[u]!=-1)<br>            son[u]=v;<br>    }<br>}<br>//将树上节点对应到线段树<br>void dfs2(int u,int tp)<br>{<br>    tree[u]=++cnt; top[u]=tp; rrank[tree[u]]=u;</int></p>
+<pre><code>if(son[u]==-1)    return;
+
+dfs2(son[u],tp);
+
+for(int i =0 ;i &lt;G[u].size();i++)
+{
+    int v=G[u][i];
+    if(v==son[u]||v==fa[u])    continue;
+    dfs2(v,v);
+}
+</code></pre><p>}</p>
+<p>void pushup(int rt)<br>{<br>    sum[rt] = sum[rt&lt;&lt;1]+sum[rt&lt;&lt;1|1];<br>}<br>void pushdown(int rt,int m)<br>{<br>    if(col[rt])<br>    {<br>        col[rt&lt;&lt;1]+=col[rt];<br>        col[rt&lt;&lt;1|1]+=col[rt];<br>        sum[rt&lt;&lt;1]+=(m-(m&gt;&gt;1))<em>col[rt];<br>        sum[rt&lt;&lt;1|1]+=(m&gt;&gt;1)</em>col[rt];<br>        col[rt]=0;<br>    }<br>}<br>void build(int l,int r,int rt)<br>{<br>    col[rt]=0;<br>    if(l==r)<br>    {<br>        sum[rt]=camp[rrank[l]];<br>        return;<br>    }<br>    int mid = (l+r)&gt;&gt;1;<br>    build(l,mid,rt&lt;&lt;1);<br>    build(mid+1,r,rt&lt;&lt;1|1);<br>    pushup(rt);</p>
+<p>}<br>void update(int sl,int sr,int v,int l,int r,int rt)<br>{<br>    if(sl&lt;=l&amp;&amp;r&lt;=sr)<br>    {<br>        col[rt]+=v;<br>        sum[rt]+=(r-l+1)*v;<br>        return;<br>    }<br>    pushdown(rt,r-l+1);<br>    int mid = (l+r)&gt;&gt;1;<br>    if(sl&lt;=mid) update(sl,sr,v,l,mid,rt&lt;&lt;1);<br>    if(mid&lt;sr) update(sl,sr,v ,mid+1,r,rt&lt;&lt;1|1);<br>    pushup(rt);</p>
+<p>}<br>void change(int x,int y,int v)<br>{<br>    while(top[x]!=top[y])<br>    {<br>        if(dep[top[x]]&lt;dep[top[y]]) swap(x,y);<br>        update(tree[top[x]],tree[x],v,1,n,1);<br>        x=fa[top[x]];<br>    }<br>    if(dep[x]&gt;dep[y]) swap(x,y);<br>    update(tree[x],tree[y],v,1,n,1);</p>
+<p>}</p>
+<p>int query(int p,int l,int r,int rt)<br>{<br>    if(l==r) return sum[rt];<br>    pushdown(rt,r-l+1);<br>    int mid =(l+r)&gt;&gt;1 , ans=0;</p>
+<pre><code>if(p&lt;=mid)    ans = query(p,l,mid,rt&lt;&lt;1);
+else ans = query(p,mid+1,r,rt&lt;&lt;1|1);
+return ans;
+</code></pre><p>}</p>
+<p>int main()<br>{<br>    ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    int m,p;<br>    while(cin&gt;&gt;n&gt;&gt;m&gt;&gt;p)<br>    {<br>        //ini()<br>        memset(son,-1,sizeof(son));<br>        for(int i =0 ;i &lt;=n ;i++)    G[i].clear();<br>        cnt=0;</p>
+<pre><code>    for(int i=1 ;i&lt;=n ;i++)
+        cin&gt;&gt;camp[i];
+    int u,v,c;
+    for(int i =1 ;i&lt;=m;i++)
+    {
+        cin&gt;&gt;u&gt;&gt;v;
+        G[u].push_back(v);
+        G[v].push_back(u);
+    }
+    dfs1(1,1,1);
+    dfs2(1,1);
+    build(1,n,1);
+
+    string str;
+    while(p--)
+    {
+        cin&gt;&gt;str;
+        if(str[0]==&apos;I&apos;)
+        {
+            cin&gt;&gt;u&gt;&gt;v&gt;&gt;c;
+            change(u,v,c);
+        }
+        if(str[0]==&apos;D&apos;)
+        {
+            cin&gt;&gt;u&gt;&gt;v&gt;&gt;c;
+            change(u,v,-c);
+        }
+        if(str[0]==&apos;Q&apos;)
+        {
+            cin&gt;&gt;c;
+            cout&lt;&lt;query(tree[c],1,n,1)&lt;&lt;endl;
+        }
+    }
+}
+return 0;
+</code></pre><p>}</p>
 </div></div>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
