@@ -6,7 +6,7 @@
             if(flag > 0.5)
                 document.body.appendChild(heart).innerHTML = "<img src=\"\\image\\1.png\"/>";
             else
-                document.body.appendChild(heart).innerHTML = "iko";
+                document.body.appendChild(heart).innerHTML = "<img src=\"\\image\\2.png\"/>";
 
             heart.style.cssText = "position: fixed;left:-100%;";
 
