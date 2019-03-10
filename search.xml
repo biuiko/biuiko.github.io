@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Django通用视图中的get_querset等函数的使用方法]]></title>
+    <title><![CDATA[python网络爬虫——Requests库]]></title>
+    <url>%2F2019%2F03%2F10%2Fpython%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E2%80%94%E2%80%94Requests%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Django通用视图中的get_queryset等函数的使用方法]]></title>
     <url>%2F2019%2F01%2F03%2FDjango%E9%80%9A%E7%94%A8%E8%A7%86%E5%9B%BE%E4%B8%AD%E7%9A%84get_queryset%E7%AD%89%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[Django通用类视图中一些方法的使用（使用投票网页来举例） 展示对象列表（比如所有问题）-istView 展示某个对象的详细信息（比如一个问题里的所有选项）-DetailView 通过表单创建某个对象（比如创建问题）-CreateView 通过表单更新某个对象信息（比如修改问题里的选项）-UpdateView 用户填写表单后转到某个完成页面-Formview 删除某个对象-DeleteView get_queryset()方法当我们使用Django自带的ListView是，ListView默认返回Model.objects.all();get_queryset()方法可以返回我们自己指定的对象列表 Question: 1234567class Question(models.Model): question_text = models.CharField(max_length=200) pub_date = models.DateTimeField(&apos;date pulished&apos;) def __str__(self): return self.question_text def was_published_recently(self): return self.pub_date &gt;= timezone.now() - datetime.timedelta(days=1) 返回Question.objects.all()，将会显示question_text,pub_date等所有信息 123class IndexView(generic.ListView): model = Question template_name = &apos;polls/index.html&apos; 使用context_object_name来指定要显示的项，使用get_queryset来显示我们想要的对象列表，如以下代码只显示近五条question_text 123456class IndexView(generic.ListView): template_name = &apos;polls/index.html&apos; context_object_name = &apos;lastest_question_list&apos; def get_queryset(self): return Question.objects.order_by(&apos;-pub_date&apos;)[:5] 使用get_queryset相当于调用父级的过滤器 未完待续，学到哪里就写到那里吧ovo本文参考：Django基础核心技术介绍(3)]]></content>
       <categories>
@@ -54,8 +59,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
         <tag>数据结构</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -66,8 +71,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
         <tag>数据结构</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
