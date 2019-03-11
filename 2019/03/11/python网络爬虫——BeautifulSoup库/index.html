@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="iko">
 <meta property="og:description" content="网络爬虫——冲冲冲 BeautifulSoup库解析HTML界面。 是解析，维护，遍历标签树的功能库">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-11T03:34:35.668Z">
+<meta property="og:updated_time" content="2019-03-11T05:25:38.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python网络爬虫——BeautifulSoup库">
 <meta name="twitter:description" content="网络爬虫——冲冲冲 BeautifulSoup库解析HTML界面。 是解析，维护，遍历标签树的功能库">
@@ -385,13 +385,13 @@
 
       
         <p>网络爬虫——冲冲冲</p>
-<h3 id="BeautifulSoup库"><a href="#BeautifulSoup库" class="headerlink" title="BeautifulSoup库"></a>BeautifulSoup库</h3><p>解析HTML界面。</p>
+<h2 id="BeautifulSoup库"><a href="#BeautifulSoup库" class="headerlink" title="BeautifulSoup库"></a>BeautifulSoup库</h2><p>解析HTML界面。</p>
 <p>是解析，维护，遍历标签树的功能库<br><a id="more"></a></p>
-<h3 id="Linux安装方法"><a href="#Linux安装方法" class="headerlink" title="Linux安装方法"></a>Linux安装方法</h3><ul>
+<h2 id="Linux安装方法"><a href="#Linux安装方法" class="headerlink" title="Linux安装方法"></a>Linux安装方法</h2><ul>
 <li>sudo apt-get install python3-bs4</li>
 </ul>
 <h3 id="BeautifulSoup库的引用方法"><a href="#BeautifulSoup库的引用方法" class="headerlink" title="BeautifulSoup库的引用方法"></a>BeautifulSoup库的引用方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup    #引入库中的BeautifulSoup类</span><br><span class="line">import bs4      #引入整个库</span><br></pre></td></tr></table></figure>
-<h3 id="BeautifulSoup类中的基本元素"><a href="#BeautifulSoup类中的基本元素" class="headerlink" title="BeautifulSoup类中的基本元素"></a>BeautifulSoup类中的基本元素</h3><p><code>soup = BeautifulSoup(&#39;&lt;p class = &quot;title&quot;&gt; hello world&lt;/p&gt;&#39;,&#39;html.parser&#39;)</code></p>
+<h2 id="BeautifulSoup类中的基本元素"><a href="#BeautifulSoup类中的基本元素" class="headerlink" title="BeautifulSoup类中的基本元素"></a>BeautifulSoup类中的基本元素</h2><p><code>soup = BeautifulSoup(&#39;&lt;p class = &quot;title&quot;&gt; hello world&lt;/p&gt;&#39;,&#39;html.parser&#39;)</code></p>
 <ul>
 <li><p>Tag: 标签</p>
 <p>  <code>soup.p : &lt;p class = &quot;title&quot;&gt; hello world&lt;/p&gt;</code></p>
@@ -409,7 +409,7 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">newsoup = BeautifulSoup(&apos;&lt;b&gt;&lt;!--this is comment--&gt;&lt;/b&gt;&lt;p&gt;hello world&lt;/p&gt;&apos;)</span><br><span class="line">newsoup.b.string : &apos;this is comment&apos;</span><br><span class="line">type(newsoup.b.string) : &lt;class:&apos;bs4.element.Comment&apos;&gt;</span><br><span class="line">newsoup.p.string : &apos;hello world&apos;</span><br><span class="line">type(newsoup.p.string) : &lt;class:&apos;bs4.element.NavigableString&apos;&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="BS4库中的遍历方法"><a href="#BS4库中的遍历方法" class="headerlink" title="BS4库中的遍历方法"></a>BS4库中的遍历方法</h3><h4 id="标签树的下行遍历"><a href="#标签树的下行遍历" class="headerlink" title="标签树的下行遍历"></a>标签树的下行遍历</h4><ul>
+<h2 id="BS4库中的遍历方法"><a href="#BS4库中的遍历方法" class="headerlink" title="BS4库中的遍历方法"></a>BS4库中的遍历方法</h2><h3 id="标签树的下行遍历"><a href="#标签树的下行遍历" class="headerlink" title="标签树的下行遍历"></a>标签树的下行遍历</h3><ul>
 <li><p>.contents:</p>
 <p>  子节点列表，将所有儿子存在列表中<br>  访问第2个儿子标签：<code>&lt;tag&gt;.contents[2]</code></p>
 </li>
@@ -422,7 +422,7 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for child in &lt;tag&gt;,descendants:</span><br><span class="line">    print(child)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="标签树的上行遍历"><a href="#标签树的上行遍历" class="headerlink" title="标签树的上行遍历"></a>标签树的上行遍历</h4><ul>
+<h3 id="标签树的上行遍历"><a href="#标签树的上行遍历" class="headerlink" title="标签树的上行遍历"></a>标签树的上行遍历</h3><ul>
 <li><p>.parent :</p>
 <p>  节点的父亲标签</p>
 </li>
@@ -431,7 +431,7 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for parent in &lt;tag&gt;.parents:</span><br><span class="line">    if parent is not None:</span><br><span class="line">        print(parent)</span><br><span class="line">    else:</span><br><span class="line">        print(parent.name)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="标签树的平行遍历"><a href="#标签树的平行遍历" class="headerlink" title="标签树的平行遍历"></a>标签树的平行遍历</h4><p>同属于一个父节点的节点才可以叫做是平行节点</p>
+<h3 id="标签树的平行遍历"><a href="#标签树的平行遍历" class="headerlink" title="标签树的平行遍历"></a>标签树的平行遍历</h3><p>同属于一个父节点的节点才可以叫做是平行节点</p>
 <ul>
 <li><p>next_sibling:</p>
 <p>  返回按HTML文本顺序下一个平行节点标签</p>
@@ -446,7 +446,7 @@
 <p>  返回按HTML文本顺序前续所有平行节点标签</p>
 </li>
 </ul>
-<h3 id="实战练习"><a href="#实战练习" class="headerlink" title="实战练习"></a>实战练习</h3><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
     
@@ -487,6 +487,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/11/使用Requests库和bs4库爬取中国最好大学排名/" rel="prev" title="使用Requests库和bs4库爬取中国最好大学排名">
+                使用Requests库和bs4库爬取中国最好大学排名 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -565,7 +569,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -620,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#BeautifulSoup库"><span class="nav-number">1.</span> <span class="nav-text">BeautifulSoup库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux安装方法"><span class="nav-number">2.</span> <span class="nav-text">Linux安装方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeautifulSoup库的引用方法"><span class="nav-number">3.</span> <span class="nav-text">BeautifulSoup库的引用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeautifulSoup类中的基本元素"><span class="nav-number">4.</span> <span class="nav-text">BeautifulSoup类中的基本元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BS4库中的遍历方法"><span class="nav-number">5.</span> <span class="nav-text">BS4库中的遍历方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标签树的下行遍历"><span class="nav-number">5.1.</span> <span class="nav-text">标签树的下行遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签树的上行遍历"><span class="nav-number">5.2.</span> <span class="nav-text">标签树的上行遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签树的平行遍历"><span class="nav-number">5.3.</span> <span class="nav-text">标签树的平行遍历</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战练习"><span class="nav-number">6.</span> <span class="nav-text">实战练习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BeautifulSoup库"><span class="nav-number">1.</span> <span class="nav-text">BeautifulSoup库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux安装方法"><span class="nav-number">2.</span> <span class="nav-text">Linux安装方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BeautifulSoup库的引用方法"><span class="nav-number">2.1.</span> <span class="nav-text">BeautifulSoup库的引用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BeautifulSoup类中的基本元素"><span class="nav-number">3.</span> <span class="nav-text">BeautifulSoup类中的基本元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BS4库中的遍历方法"><span class="nav-number">4.</span> <span class="nav-text">BS4库中的遍历方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标签树的下行遍历"><span class="nav-number">4.1.</span> <span class="nav-text">标签树的下行遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签树的上行遍历"><span class="nav-number">4.2.</span> <span class="nav-text">标签树的上行遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签树的平行遍历"><span class="nav-number">4.3.</span> <span class="nav-text">标签树的平行遍历</span></a></li></ol></li></ol></div>
             
 
           </div>
