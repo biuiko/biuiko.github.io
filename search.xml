@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用Requests库和Re库爬取淘宝商品数据]]></title>
+    <url>%2F2019%2F03%2F12%2F%E4%BD%BF%E7%94%A8Requests%E5%BA%93%E5%92%8CRe%E5%BA%93%E7%88%AC%E5%8F%96%E6%B7%98%E5%AE%9D%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE%2F</url>
+    <content type="text"><![CDATA[定向爬虫实战爬取的url: https://s.taobao.com/search 网站robots协议规定不能爬取，但我只拿来做练习模拟的是人类访问而且不做商业用途，就暂且快乐的爬一下qwq 工具： Ubuntu，python3 ,requests库 功能 输入想要爬取的商品类型 返回商品编号，商品单价，商品描述信息 自定义了一下爬取的深度，只爬了3页信息 实现方法使用requests来获取网页，运用正则匹配来寻找HTML里我们需要的信息 代码实现code12345678910111213141516171819202122232425262728293031323334353637383940414243444546import requestsimport redef getHTMLText(url): try: r = requests.get(url,timeout = 30) r.raise_for_status() r.encoding = r.apparent_encoding return r.text except: print(‘fail to get html’) return ‘’def getgoodslist(ilt,text): try: pricelt = re.findall(r’\”view_price\”:\”[\d.]\”‘,text) namelt = re.findall(r’\”raw_title\”:\”.?\”‘,text) for i in range(len(pricelt)): p = eval(pricelt[i].split(‘:’)[1]) n = eval(namelt[i].split(‘:’)[1]) ilt.append([p,n]) except: print(‘get goods list : error’)def printgoods(ilt): tplt = ‘&#123;0:5&#125;\t&#123;1:10&#125;\t&#123;2:30&#125;’ print(tplt.format(‘序号’,‘单价’,‘描述’)) count = 1 for i in ilt: print(tplt.format(str(count),i[0],i[1])) count += 1if name == ‘main‘: goods = input(‘请输入要搜索的名称:’) #print(goods) url = ‘https://s.taobao.com/search?q=&#39; + goods goodslist = [] depth = 3 for i in range(depth): finall_url = url + ‘&amp;s=’ + str(44*i) # print(finall_url) text = getHTMLText(finall_url) getgoodslist(goodslist,text) printgoods(goodslist) 代码运行结果]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用Requests库和bs4库爬取中国最好大学排名]]></title>
     <url>%2F2019%2F03%2F11%2F%E4%BD%BF%E7%94%A8Requests%E5%BA%93%E5%92%8Cbs4%E5%BA%93%E7%88%AC%E5%8F%96%E4%B8%AD%E5%9B%BD%E6%9C%80%E5%A5%BD%E5%A4%A7%E5%AD%A6%E6%8E%92%E5%90%8D%2F</url>
     <content type="text"><![CDATA[定向爬虫实战爬取的url: http://www.zuihaodaxue.cn/zuihaodaxuepaiming2019.html 该网站没有robots协议所以可以快乐的爬取啦！ 工具： ubuntu , python3, requests库，bs4库 功能通过requests库获取网页并使用bs4来解析，获取排名前20的学校的排名，学校名，总分。 代码实现1234567891011121314151617181920212223242526272829303132333435363738import requestsfrom bs4 import BeautifulSoupimport bs4 def getHTMLText(url): try: r = requests.get(url,timeout = 30) r.raise_for_status() r.encoding = r.apparent_encoding return r.text except: print("fail") return ""def fillUnivList(ulist,html): soup = BeautifulSoup(html,"html.parser") for tr in soup.find('tbody').children: if isinstance(tr,bs4.element.Tag): tds = tr('td') ulist.append([tds[0].string,tds[1].string,tds[3].string]) def printUnivList(ulist,num): tilp = "&#123;0:&lt;10&#125;\t&#123;1:&lt;10&#125;\t&#123;2:&lt;10&#125;" print(tilp.format("排名","学校名","总分",chr(12288))) for i in range(num): print(tilp.format(ulist[i][0],ulist[i][1],ulist[i][2],chr(12288)))def main(): uinfo = [] url = "http://www.zuihaodaxue.cn/zuihaodaxuepaiming2019.html" html = getHTMLText(url) fillUnivList(uinfo,html) printUnivList(uinfo,20)main() 代码运行结果]]></content>
@@ -44,8 +56,8 @@
         <category>Django</category>
       </categories>
       <tags>
-        <tag>Django</tag>
         <tag>python</tag>
+        <tag>Django</tag>
       </tags>
   </entry>
   <entry>

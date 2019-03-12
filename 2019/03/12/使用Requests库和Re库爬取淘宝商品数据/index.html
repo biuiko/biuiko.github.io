@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="网络爬虫——冲冲冲 BeautifulSoup库解析HTML界面。 是解析，维护，遍历标签树的功能库">
+<meta name="description" content="定向爬虫实战爬取的url: https://s.taobao.com/search 网站robots协议规定不能爬取，但我只拿来做练习模拟的是人类访问而且不做商业用途，就暂且快乐的爬一下qwq 工具： Ubuntu，python3 ,requests库 功能 输入想要爬取的商品类型 返回商品编号，商品单价，商品描述信息 自定义了一下爬取的深度，只爬了3页信息  实现方法使用requests来获取网">
 <meta name="keywords" content="python,爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python网络爬虫——BeautifulSoup库">
-<meta property="og:url" content="http://yoursite.com/2019/03/11/python网络爬虫——BeautifulSoup库/index.html">
+<meta property="og:title" content="使用Requests库和Re库爬取淘宝商品数据">
+<meta property="og:url" content="http://yoursite.com/2019/03/12/使用Requests库和Re库爬取淘宝商品数据/index.html">
 <meta property="og:site_name" content="iko">
-<meta property="og:description" content="网络爬虫——冲冲冲 BeautifulSoup库解析HTML界面。 是解析，维护，遍历标签树的功能库">
+<meta property="og:description" content="定向爬虫实战爬取的url: https://s.taobao.com/search 网站robots协议规定不能爬取，但我只拿来做练习模拟的是人类访问而且不做商业用途，就暂且快乐的爬一下qwq 工具： Ubuntu，python3 ,requests库 功能 输入想要爬取的商品类型 返回商品编号，商品单价，商品描述信息 自定义了一下爬取的深度，只爬了3页信息  实现方法使用requests来获取网">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-11T05:25:38.740Z">
+<meta property="og:image" content="http://yoursite.com/image/tbpc.png">
+<meta property="og:updated_time" content="2019-03-12T07:20:16.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python网络爬虫——BeautifulSoup库">
-<meta name="twitter:description" content="网络爬虫——冲冲冲 BeautifulSoup库解析HTML界面。 是解析，维护，遍历标签树的功能库">
+<meta name="twitter:title" content="使用Requests库和Re库爬取淘宝商品数据">
+<meta name="twitter:description" content="定向爬虫实战爬取的url: https://s.taobao.com/search 网站robots协议规定不能爬取，但我只拿来做练习模拟的是人类访问而且不做商业用途，就暂且快乐的爬一下qwq 工具： Ubuntu，python3 ,requests库 功能 输入想要爬取的商品类型 返回商品编号，商品单价，商品描述信息 自定义了一下爬取的深度，只爬了3页信息  实现方法使用requests来获取网">
+<meta name="twitter:image" content="http://yoursite.com/image/tbpc.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/11/python网络爬虫——BeautifulSoup库/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/12/使用Requests库和Re库爬取淘宝商品数据/">
 
 
 
 
 
-  <title>python网络爬虫——BeautifulSoup库 | iko</title>
+  <title>使用Requests库和Re库爬取淘宝商品数据 | iko</title>
   
 
 
@@ -295,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/python网络爬虫——BeautifulSoup库/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/使用Requests库和Re库爬取淘宝商品数据/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="魏钰冰">
@@ -312,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python网络爬虫——BeautifulSoup库</h1>
+          <h1 class="post-title" itemprop="name headline">使用Requests库和Re库爬取淘宝商品数据</h1>
         
 
         <div class="post-meta">
@@ -324,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T10:14:00+08:00">
-                2019-03-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-12T14:56:07+08:00">
+                2019-03-12
               </time>
             
 
@@ -384,68 +386,17 @@
       
 
       
-        <p>网络爬虫——冲冲冲</p>
-<h2 id="BeautifulSoup库"><a href="#BeautifulSoup库" class="headerlink" title="BeautifulSoup库"></a>BeautifulSoup库</h2><p>解析HTML界面。</p>
-<p>是解析，维护，遍历标签树的功能库<br><a id="more"></a></p>
-<h2 id="Linux安装方法"><a href="#Linux安装方法" class="headerlink" title="Linux安装方法"></a>Linux安装方法</h2><ul>
-<li>sudo apt-get install python3-bs4</li>
+        <h3 id="定向爬虫实战"><a href="#定向爬虫实战" class="headerlink" title="定向爬虫实战"></a>定向爬虫实战</h3><p>爬取的url: <a href="https://s.taobao.com/search" target="_blank" rel="noopener">https://s.taobao.com/search</a></p>
+<p>网站robots协议规定不能爬取，但我只拿来做练习模拟的是人类访问而且不做商业用途，就暂且快乐的爬一下qwq</p>
+<p>工具： Ubuntu，python3 ,requests库</p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ul>
+<li>输入想要爬取的商品类型</li>
+<li>返回商品编号，商品单价，商品描述信息</li>
+<li>自定义了一下爬取的深度，只爬了3页信息</li>
 </ul>
-<h3 id="BeautifulSoup库的引用方法"><a href="#BeautifulSoup库的引用方法" class="headerlink" title="BeautifulSoup库的引用方法"></a>BeautifulSoup库的引用方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup    #引入库中的BeautifulSoup类</span><br><span class="line">import bs4      #引入整个库</span><br></pre></td></tr></table></figure>
-<h2 id="BeautifulSoup类中的基本元素"><a href="#BeautifulSoup类中的基本元素" class="headerlink" title="BeautifulSoup类中的基本元素"></a>BeautifulSoup类中的基本元素</h2><p><code>soup = BeautifulSoup(&#39;&lt;p class = &quot;title&quot;&gt; hello world&lt;/p&gt;&#39;,&#39;html.parser&#39;)</code></p>
-<ul>
-<li><p>Tag: 标签</p>
-<p>  <code>soup.p : &lt;p class = &quot;title&quot;&gt; hello world&lt;/p&gt;</code></p>
-</li>
-<li><p>Name: 标签的名字,格式&lt; tag &gt;.name</p>
-<p>  <code>soup.p.name = p</code></p>
-</li>
-<li><p>Attributes: 标签的属性，字典形式组织，格式：&lt; tag &gt;.attrs</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tag = soup.p</span><br><span class="line">tag.attrs[&apos;class&apos;] : [&apos;title&apos;]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>NavigableString: 标签内非属性字符串,格式：&lt; tag &gt;.string</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.p.string : &apos;hello world&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Comment: 标签内注释部分的字符串</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">newsoup = BeautifulSoup(&apos;&lt;b&gt;&lt;!--this is comment--&gt;&lt;/b&gt;&lt;p&gt;hello world&lt;/p&gt;&apos;)</span><br><span class="line">newsoup.b.string : &apos;this is comment&apos;</span><br><span class="line">type(newsoup.b.string) : &lt;class:&apos;bs4.element.Comment&apos;&gt;</span><br><span class="line">newsoup.p.string : &apos;hello world&apos;</span><br><span class="line">type(newsoup.p.string) : &lt;class:&apos;bs4.element.NavigableString&apos;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="BS4库中的遍历方法"><a href="#BS4库中的遍历方法" class="headerlink" title="BS4库中的遍历方法"></a>BS4库中的遍历方法</h2><h3 id="标签树的下行遍历"><a href="#标签树的下行遍历" class="headerlink" title="标签树的下行遍历"></a>标签树的下行遍历</h3><ul>
-<li><p>.contents:</p>
-<p>  子节点列表，将所有儿子存在列表中<br>  访问第2个儿子标签：<code>&lt;tag&gt;.contents[2]</code></p>
-</li>
-<li><p>.children:</p>
-<p>  子节点的迭代类型，访问所有儿子节点</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for child in &lt;tag&gt;.children:</span><br><span class="line">    print(child)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>descendants:</p>
-<p>  子孙孙孙节点的迭代类型，访问所有子孙节点</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for child in &lt;tag&gt;,descendants:</span><br><span class="line">    print(child)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="标签树的上行遍历"><a href="#标签树的上行遍历" class="headerlink" title="标签树的上行遍历"></a>标签树的上行遍历</h3><ul>
-<li><p>.parent :</p>
-<p>  节点的父亲标签</p>
-</li>
-<li><p>.parents:</p>
-<p>  父父父父节点的迭代类型，访问该节点的父亲，祖父，曾*祖父节点</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for parent in &lt;tag&gt;.parents:</span><br><span class="line">    if parent is not None:</span><br><span class="line">        print(parent)</span><br><span class="line">    else:</span><br><span class="line">        print(parent.name)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="标签树的平行遍历"><a href="#标签树的平行遍历" class="headerlink" title="标签树的平行遍历"></a>标签树的平行遍历</h3><p>同属于一个父节点的节点才可以叫做是平行节点</p>
-<ul>
-<li><p>next_sibling:</p>
-<p>  返回按HTML文本顺序下一个平行节点标签</p>
-</li>
-<li><p>next_siblings:</p>
-<p>  返回按HTML文本顺序后续所有平行节点标签</p>
-</li>
-<li><p>previous_sibling:</p>
-<p>  返回按HTML文本顺序上一个节点标签</p>
-</li>
-<li><p>previous_siblings:</p>
-<p>  返回按HTML文本顺序前续所有平行节点标签</p>
-</li>
-</ul>
+<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><p>使用requests来获取网页，运用正则匹配来寻找HTML里我们需要的信息</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="spoiler collapsed"><div class="spoiler-title">code</div><div class="spoiler-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url,timeout = <span class="number">30</span>)</span><br><span class="line">        r.raise_for_status()</span><br><span class="line">        r.encoding = r.apparent_encoding</span><br><span class="line">        <span class="keyword">return</span> r.text</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">‘fail to get html’</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">‘’</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getgoodslist</span><span class="params">(ilt,text)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        pricelt = re.findall(<span class="string">r’\”view_price\”:\”[\d.]<em>\”‘</em></span>,text)</span><br><span class="line">        namelt = re.findall(<span class="string">r’\”raw_title\”:\”.?\”‘</span>,text)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(pricelt)):</span><br><span class="line">            p = eval(pricelt[i].split(<span class="string">‘:’</span>)[<span class="number">1</span>])</span><br><span class="line">            n = eval(namelt[i].split(<span class="string">‘:’</span>)[<span class="number">1</span>])</span><br><span class="line">            ilt.append([p,n])</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">‘get goods list : error’</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printgoods</span><span class="params">(ilt)</span>:</span></span><br><span class="line">    tplt = <span class="string">‘&#123;0:5&#125;\t&#123;1:10&#125;\t&#123;2:30&#125;’</span></span><br><span class="line">    print(tplt.format(<span class="string">‘序号’</span>,<span class="string">‘单价’</span>,<span class="string">‘描述’</span>))</span><br><span class="line">    count = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> ilt:</span><br><span class="line">        print(tplt.format(str(count),i[<span class="number">0</span>],i[<span class="number">1</span>]))</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <strong>name</strong> == <span class="string">‘<strong>main</strong>‘</span>:</span><br><span class="line">    goods = input(<span class="string">‘请输入要搜索的名称:’</span>)</span><br><span class="line">    <span class="comment">#print(goods)</span></span><br><span class="line">    url = <span class="string">‘<a href="https://s.taobao.com/search?q=&#39;" target="_blank" rel="noopener">https://s.taobao.com/search?q=&#39;</a></span> + goods</span><br><span class="line">    goodslist = []</span><br><span class="line">    depth = <span class="number">3</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(depth):</span><br><span class="line">        finall_url = url + <span class="string">‘&amp;s=’</span> + str(<span class="number">44</span>*i)</span><br><span class="line">    <span class="comment">#   print(finall_url)</span></span><br><span class="line">        text = getHTMLText(finall_url)</span><br><span class="line">        getgoodslist(goodslist,text)</span><br><span class="line">    printgoods(goodslist)</span><br><span class="line">        </span><br></pre></td></tr></table></figure></div></div>
+<h3 id="代码运行结果"><a href="#代码运行结果" class="headerlink" title="代码运行结果"></a>代码运行结果</h3><p><img src="/image/tbpc.png" alt="爬取数据"></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
@@ -478,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/10/python网络爬虫——Requests库/" rel="next" title="python网络爬虫——Requests库">
-                <i class="fa fa-chevron-left"></i> python网络爬虫——Requests库
+              <a href="/2019/03/11/使用Requests库和bs4库爬取中国最好大学排名/" rel="next" title="使用Requests库和bs4库爬取中国最好大学排名">
+                <i class="fa fa-chevron-left"></i> 使用Requests库和bs4库爬取中国最好大学排名
               </a>
             
           </div>
@@ -487,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/11/使用Requests库和bs4库爬取中国最好大学排名/" rel="prev" title="使用Requests库和bs4库爬取中国最好大学排名">
-                使用Requests库和bs4库爬取中国最好大学排名 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -624,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BeautifulSoup库"><span class="nav-number">1.</span> <span class="nav-text">BeautifulSoup库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux安装方法"><span class="nav-number">2.</span> <span class="nav-text">Linux安装方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BeautifulSoup库的引用方法"><span class="nav-number">2.1.</span> <span class="nav-text">BeautifulSoup库的引用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BeautifulSoup类中的基本元素"><span class="nav-number">3.</span> <span class="nav-text">BeautifulSoup类中的基本元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BS4库中的遍历方法"><span class="nav-number">4.</span> <span class="nav-text">BS4库中的遍历方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标签树的下行遍历"><span class="nav-number">4.1.</span> <span class="nav-text">标签树的下行遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签树的上行遍历"><span class="nav-number">4.2.</span> <span class="nav-text">标签树的上行遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签树的平行遍历"><span class="nav-number">4.3.</span> <span class="nav-text">标签树的平行遍历</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定向爬虫实战"><span class="nav-number">1.</span> <span class="nav-text">定向爬虫实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能"><span class="nav-number">2.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方法"><span class="nav-number">3.</span> <span class="nav-text">实现方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">4.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码运行结果"><span class="nav-number">5.</span> <span class="nav-text">代码运行结果</span></a></li></ol></div>
             
 
           </div>
