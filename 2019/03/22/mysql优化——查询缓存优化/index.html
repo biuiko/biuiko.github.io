@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构,并查集,">
+  <meta name="keywords" content="mysql优化,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="并查集真的是一个我超级爱的数据结构，因为超级爱我就去学了一堆关于他的花里胡哨的操作:种类并查集，可持久化并查集，删点并查集….可惜的是打ACM这么久没碰到过一道并查集的题【委屈】，并查集一定要在我的博客里有姓名！">
-<meta name="keywords" content="数据结构,并查集">
+<meta name="description" content="浅谈一下我对查询缓存优化的一些理解，给出几个优化方法和这个方法可以优化的原因">
+<meta name="keywords" content="mysql优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="并查集入门">
-<meta property="og:url" content="http://yoursite.com/2018/12/29/并查集入门/index.html">
+<meta property="og:title" content="mysql优化——查询缓存优化">
+<meta property="og:url" content="http://yoursite.com/2019/03/22/mysql优化——查询缓存优化/index.html">
 <meta property="og:site_name" content="iko">
-<meta property="og:description" content="并查集真的是一个我超级爱的数据结构，因为超级爱我就去学了一堆关于他的花里胡哨的操作:种类并查集，可持久化并查集，删点并查集….可惜的是打ACM这么久没碰到过一道并查集的题【委屈】，并查集一定要在我的博客里有姓名！">
+<meta property="og:description" content="浅谈一下我对查询缓存优化的一些理解，给出几个优化方法和这个方法可以优化的原因">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/image/UnionFind1.png">
-<meta property="og:updated_time" content="2019-01-03T10:50:54.155Z">
+<meta property="og:updated_time" content="2019-03-22T11:26:31.410Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="并查集入门">
-<meta name="twitter:description" content="并查集真的是一个我超级爱的数据结构，因为超级爱我就去学了一堆关于他的花里胡哨的操作:种类并查集，可持久化并查集，删点并查集….可惜的是打ACM这么久没碰到过一道并查集的题【委屈】，并查集一定要在我的博客里有姓名！">
-<meta name="twitter:image" content="http://yoursite.com/image/UnionFind1.png">
+<meta name="twitter:title" content="mysql优化——查询缓存优化">
+<meta name="twitter:description" content="浅谈一下我对查询缓存优化的一些理解，给出几个优化方法和这个方法可以优化的原因">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/29/并查集入门/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/22/mysql优化——查询缓存优化/">
 
 
 
 
 
-  <title>并查集入门 | iko</title>
+  <title>mysql优化——查询缓存优化 | iko</title>
   
 
 
@@ -297,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/29/并查集入门/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/mysql优化——查询缓存优化/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="魏钰冰">
@@ -314,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">并查集入门</h1>
+          <h1 class="post-title" itemprop="name headline">mysql优化——查询缓存优化</h1>
         
 
         <div class="post-meta">
@@ -326,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-29T14:38:07+08:00">
-                2018-12-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T17:20:35+08:00">
+                2019-03-22
               </time>
             
 
@@ -349,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
                   </a>
                 </span>
 
@@ -386,33 +384,14 @@
       
 
       
-        <p>并查集真的是一个我超级爱的数据结构，因为超级爱我就去学了一堆关于他的花里胡哨的操作:种类并查集，可持久化并查集，删点并查集….可惜的是打ACM这么久没碰到过一道并查集的题【委屈】，并查集一定要在我的博客里有姓名！<br><a id="more"></a></p>
-<h3 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h3><p>从名字可以看出来并查集最重要的两个功能是合并和查找</p>
-<p>我要用超级有爱的例子来介绍并查集：</p>
-<blockquote>
-<p>话说江湖上散落着各式各样的大侠，有上千个之多。他们没有什么正当职业，整天背着剑在外面走来走去，碰到和自己不是一路人的，就免不了要打一架。但大侠们有一个优点就是讲义气，绝对不打自己的朋友。而且他们信奉“朋友的朋友就是我的朋友”，只要是能通过朋友关系串联起来的，不管拐了多少个弯，都认为是自己人。这样一来，江湖上就形成了一个一个的群落，通过两两之间的朋友关系串联起来。而不在同一个群落的人，无论如何都无法通过朋友关系连起来，于是就可以放心往死了打。但是两个原本互不相识的人，如何判断是否属于一个朋友圈呢？</p>
-</blockquote>
-<blockquote>
-<p>但是还有问题啊，大侠们只知道自己直接的朋友是谁，很多人压根就不认识队长，要判断自己的队长是谁，只能漫无目的的通过朋友的朋友关系问下去：“你是不是队长？你是不是队长？”这样一来，队长面子上挂不住了，而且效率太低，还有可能陷入无限循环中。于是队长下令，重新组队。队内所有人实行分等级制度，形成树状结构，我队长就是根节点，下面分别是二级队员、三级队员。每个人只要记住自己的上级是谁就行了。遇到判断敌友的时候，只要一层层向上问，直到最高层，就可以在短时间内确定队长是谁了。由于我们关心的只是两个人之间是否连通，至于他们是如何连通的，以及每个圈子内部的结构是怎样的，甚至队长是谁，并不重要。所以我们可以放任队长随意重新组队，只要不搞错敌友关系就好了。于是，门派产生了。<br><img src="/image/UnionFind1.png" alt="门派"></p>
-</blockquote>
-<p>两个大侠碰面判断两个人是否属于同一个门派就是并查集里的查找部分</p>
-<p>两个大侠如果超级投缘想要界面不求同年同日生巴拉巴拉…就是并查集里的合并部分</p>
-<h3 id="并查集实现："><a href="#并查集实现：" class="headerlink" title="并查集实现："></a>并查集实现：</h3><p>创建一个数组int pre[]，这个数组记录自己的上级。<br>首先每个人都是自己的上级，所以每个人的上级节点保存的都是自己的信息：pre[i] = i.</p>
-<h5 id="那如何去寻找自己的掌门呢？"><a href="#那如何去寻找自己的掌门呢？" class="headerlink" title="那如何去寻找自己的掌门呢？"></a>那如何去寻找自己的掌门呢？</h5><p>如果一个人的上级就是他自己，那说明他就是掌门人了，查找到此为止。也有孤家寡人自成一派的，比如欧阳锋，那么他的上级就是他自己。每个人都只认自己的上级。比如胡青牛同学只知道自己的上级是杨左使。张无忌是谁？不认识！要想知道自己的掌门是谁，只能一级级查上去</p>
-<p>寻找掌门代码实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = x;      <span class="comment">//委托p去寻找</span></span><br><span class="line">    <span class="keyword">while</span>(p!=pre[p])    <span class="comment">//当p的上级不是自己的时候说明他还不是掌门</span></span><br><span class="line">        p = pre[p];     <span class="comment">//让p的上级继续去寻找</span></span><br><span class="line">    <span class="comment">//当p = pre[p]的时候说明p的上级就是自己，也就是说p就是掌门</span></span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h5 id="如何让给两个人成为朋友属于同一个掌门呢？"><a href="#如何让给两个人成为朋友属于同一个掌门呢？" class="headerlink" title="如何让给两个人成为朋友属于同一个掌门呢？"></a>如何让给两个人成为朋友属于同一个掌门呢？</h5><p>我想让小x和小y做朋友，那么我只要让给他们的掌门做朋友他们俩个就是朋友啦</p>
-<p>代码实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">combine</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span>   <span class="comment">//我要让x和y做朋友</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fx = find(x);   <span class="comment">//x的掌门是fx</span></span><br><span class="line">    <span class="keyword">int</span> fy = find(y);   <span class="comment">//y的掌门是fy</span></span><br><span class="line">    <span class="keyword">if</span>(fx != fy)        <span class="comment">//如果他们的掌门是一个人那他们一定就是朋友了</span></span><br><span class="line">        pre[fx] = fy;   <span class="comment">//如果不是一个人我就让两个掌门发生关系，fx不再是掌门了，他的掌门变成了fy</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h3><p>上面的并查集还有 <del>一丢丢的</del> 小缺点，这颗树型的关系稍微不小心就可能退化成一条链状的关系:(</p>
-<ul>
-<li><p>那么我们怎么避免他退化成一条链呢？</p>
-<p>  上面的并查集每个人的上集结点记录的是自己的直接的上级，那我们可不可以让他记录自己的终极大BOSS直接记录自己的掌门呢！显然是可以的！而且这样也很好的避免了退化成一条链的情况，这就是并查集的路径压缩。</p>
-</li>
-<li><p>那么我们在代码中是怎么实现的呢？</p>
-<p>  我们在寻找掌门的时候直接将每个人的上级节点直接只想掌门就oooooook啦</p>
-</li>
-</ul>
-<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p=x;</span><br><span class="line">    <span class="keyword">while</span>(p!=pre[x])    <span class="comment">//委托p去寻找掌门</span></span><br><span class="line">        p=pre[x];</span><br><span class="line">    <span class="comment">//现在p就是掌门啦</span></span><br><span class="line">    <span class="comment">//我们将x寻找掌门时路过的所有上级的上级节点信息更改为掌门信息</span></span><br><span class="line">    <span class="keyword">while</span>(x!=p)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = pre[x];</span><br><span class="line">        pre[x] = p;</span><br><span class="line">        x= temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>递归写法：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x==pre[x]? x: pre[x] = find(pre[x]); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>浅谈一下我对查询缓存优化的一些理解，给出几个优化方法和这个方法可以优化的原因<br><a id="more"></a></p>
+<h3 id="1-查询过程中尽量避免使用SELECT"><a href="#1-查询过程中尽量避免使用SELECT" class="headerlink" title="1.查询过程中尽量避免使用SELECT *"></a>1.查询过程中尽量避免使用SELECT *</h3><p>原因： MySQL客户端和服务端的通信协议是半双工的，如果使用select<em>,会使服务端想应该客户端的数据非常多，客户端必须完整的接受服务端发送的数据，不能只收取几条然后让服务端停止发送。所以在开发过程中要注意尽量少的使用select</em>,保持查询简单且只返回所需的数据，减少通信间数据包的大小和数量qwq。</p>
+<h3 id="2-用多个小表代替一张大表"><a href="#2-用多个小表代替一张大表" class="headerlink" title="2.用多个小表代替一张大表"></a>2.用多个小表代替一张大表</h3><p>原因：MySQL的查询缓存系统会跟踪查询中涉及的每个表，如果这些表发生变化，那么和这张表相关的所有缓存数据都会失效，如果缓存有关这张表的数据非常多的时候，失效一次就会带来超级大的系统开销，所以我们尽量（但不要过度）使用多张小表代替一张大表来使缓存不那么容易失效。</p>
+<h3 id="3-尽可能批量插入，避免单条插入"><a href="#3-尽可能批量插入，避免单条插入" class="headerlink" title="3.尽可能批量插入，避免单条插入"></a>3.尽可能批量插入，避免单条插入</h3><p>原因同2，插入一次就会使缓存失效。</p>
+<h3 id="4-合理控制缓存空间大小"><a href="#4-合理控制缓存空间大小" class="headerlink" title="4.合理控制缓存空间大小"></a>4.合理控制缓存空间大小</h3><p>如果查询缓存非常大或者碎片非常多，不仅在写操作时会带来很大的系统开销，在查询操作时，任何查询语句在开始之前都会先在查询缓存中检查（即使它永远不会命中缓存），这里在缓存中进行查找也会带来很大的系统开销。</p>
+<h3 id="5-可以通过SQL-CACHE和SQL-NO-CACHE来控制某个查询语句是否缓存"><a href="#5-可以通过SQL-CACHE和SQL-NO-CACHE来控制某个查询语句是否缓存" class="headerlink" title="5.可以通过SQL_CACHE和SQL_NO_CACHE来控制某个查询语句是否缓存"></a>5.可以通过SQL_CACHE和SQL_NO_CACHE来控制某个查询语句是否缓存</h3><h3 id="胡七八说"><a href="#胡七八说" class="headerlink" title="胡七八说"></a>胡七八说</h3><p>开查询缓存要谨慎啊qwq</p>
+<p>评估查询缓存是否对系统进行了性能优化是一个很复杂的东西</p>
+<p>但密集型应用还是不要作死开查询缓存啦ovo</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
@@ -430,9 +409,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i>数据结构</a>
-          
-            <a href="/tags/并查集/" rel="tag"><i class="fa fa-tag"></i>并查集</a>
+            <a href="/tags/mysql优化/" rel="tag"><i class="fa fa-tag"></i>mysql优化</a>
           
         </div>
       
@@ -445,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/28/七大排序算法/" rel="next" title="七个常见排序算法">
-                <i class="fa fa-chevron-left"></i> 七个常见排序算法
+              <a href="/2019/03/12/使用Requests库和Re库爬取淘宝商品数据/" rel="next" title="使用Requests库和Re库爬取淘宝商品数据">
+                <i class="fa fa-chevron-left"></i> 使用Requests库和Re库爬取淘宝商品数据
               </a>
             
           </div>
@@ -454,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/29/种类并查集/" rel="prev" title="种类并查集">
-                种类并查集 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -591,7 +564,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#并查集"><span class="nav-number">1.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并查集实现："><span class="nav-number">2.</span> <span class="nav-text">并查集实现：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#那如何去寻找自己的掌门呢？"><span class="nav-number">2.0.1.</span> <span class="nav-text">那如何去寻找自己的掌门呢？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何让给两个人成为朋友属于同一个掌门呢？"><span class="nav-number">2.0.2.</span> <span class="nav-text">如何让给两个人成为朋友属于同一个掌门呢？</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#路径压缩"><span class="nav-number">3.</span> <span class="nav-text">路径压缩</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查询过程中尽量避免使用SELECT"><span class="nav-number">1.</span> <span class="nav-text">1.查询过程中尽量避免使用SELECT *</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-用多个小表代替一张大表"><span class="nav-number">2.</span> <span class="nav-text">2.用多个小表代替一张大表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-尽可能批量插入，避免单条插入"><span class="nav-number">3.</span> <span class="nav-text">3.尽可能批量插入，避免单条插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-合理控制缓存空间大小"><span class="nav-number">4.</span> <span class="nav-text">4.合理控制缓存空间大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-可以通过SQL-CACHE和SQL-NO-CACHE来控制某个查询语句是否缓存"><span class="nav-number">5.</span> <span class="nav-text">5.可以通过SQL_CACHE和SQL_NO_CACHE来控制某个查询语句是否缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#胡七八说"><span class="nav-number">6.</span> <span class="nav-text">胡七八说</span></a></li></ol></div>
             
 
           </div>
