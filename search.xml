@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[23种设计模式——创建型模式]]></title>
+    <url>%2F2019%2F04%2F11%2F23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[将对五种创建型模式进行简单的分析和使用场景介绍，会给出对应的C++代码qwq. 工厂方法模式简介工厂方法模式又称为多态工厂模式。核心工厂类不再负责所有产品的创建，而是将具体创建工作交给子类。核心类作为你抽象工厂只负责给出具体工厂子类必须实现的接口。 适用场景iko的食堂里每一款菜系都要聘请一名专业的师傅来掌厨，如果iko的食堂想要推出新品菜系（比如西红柿炒蛋？），那么就要多雇佣一个厨师，其中厨师就是具体的工厂类，用来生产具体的产品类（西红柿炒蛋） 代码实现code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#include&lt;iostream&gt;using namespace std;class Product&#123;public: virtual void show_product_name()=0;&#125;;class ConcreteProductA:public Product&#123;public: void show_product_name() &#123; cout &lt;&lt; “Product A”&lt;&lt;endl; &#125;&#125;;class ConcreteProductB:public Product&#123;public: void show_product_name() &#123; cout &lt;&lt; “Product B”&lt;&lt;endl; &#125;&#125;;class Factory&#123;public: virtual Product create_product() =0;&#125;;class ConcreteFactoryA:public Factory&#123;public: Product create_product() &#123; return new ConcreteProductA; &#125;&#125;;class ConcreteFactoryB:public Factory&#123;public: Product create_product() &#123; return new ConcreteProductB; &#125;&#125;;int main()&#123; Factory factory = new ConcreteFactoryA; Product product1 = factory-&gt;create_product(); product1-&gt;show_product_name(); factory = new ConcreteFactoryB; Product product2 = factory-&gt;create_product(); product2-&gt;show_product_name();&#125; 代码运行结果：]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[23种设计模式]]></title>
     <url>%2F2019%2F04%2F10%2F23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[最近迷之超级想看这本书，立个小大flag,每周更新五个设计模式（附带C++代码） 希望可以把下面的链接填满 六大原则 单一职责原则：每个对象或者类只有一个职责。。 开放封闭原则：对修改封闭对扩展开放，尽量不修改软件实体而是通过扩展的方式添加或删除功能。 里氏替换原则：父类出现的任何地方都可以用他的子类来替换。 迪米特原则：一个对象尽量少的与其他对象发生交互。 接口隔离原则：使用多个专门的接口而不是单一的接口。 依赖倒置原则：抽象不应依赖于细节，细节应依赖于抽象。面向接口编程。 23种设计模式创建型模式结构型模式行为模式]]></content>
@@ -137,8 +149,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
         <tag>数据结构</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -149,8 +161,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
         <tag>数据结构</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
