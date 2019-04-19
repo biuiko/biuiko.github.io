@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/image/v.png">
 <meta property="og:image" content="http://yoursite.com/image/vv.png">
-<meta property="og:updated_time" content="2019-01-03T10:49:00.113Z">
+<meta property="og:updated_time" content="2019-04-19T12:25:57.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="种类并查集">
 <meta name="twitter:description" content="种类并查集就是在并查集的基础上对于每个节点增加了一个种类的属性">
@@ -388,7 +388,7 @@
 
       
         <p>种类并查集就是在并查集的基础上对于每个节点增加了一个种类的属性<br><a id="more"></a></p>
-<h3 id="种类并查集"><a href="#种类并查集" class="headerlink" title="种类并查集"></a>种类并查集</h3><p>它并查集的一种变形。在这种并查集中，节点被分为了不同的n类（类别一般较少）。其大致结构与并查集相同，但区别在于，分组并查集需要一个relation数组，来存储节点的种类。这就需要注意结点与其根节点之间的关系。下面具体问题具体分析</p>
+<h3 id="种类并查集"><a href="#种类并查集" class="headerlink" title="种类并查集"></a>种类并查集</h3><p>它并查集的一种变形。在这种并查集中，节点被分为了不同的n类（类别一般较少）。其大致结构与并查集相同，但区别在于，种类并查集需要一个relation数组，来存储节点的种类。这就需要注意结点与其根节点之间的关系。下面具体问题具体分析</p>
 <h4 id="A-Bug’s-Life"><a href="#A-Bug’s-Life" class="headerlink" title="A Bug’s Life"></a>A Bug’s Life</h4><p>题目链接：<a href="http://poj.org/problem?id=2492" target="_blank" rel="noopener">POJ-2492 A Bug’s Life</a></p>
 <p>题目大意：</p>
 <ul>
@@ -403,7 +403,7 @@
 <li>初始化：<ul>
 <li>relation[i] = 0 表示i与他的父亲节点是同一性别 </li>
 <li>relation[i] = 1 表示i与他的父亲节点是不同性别</li>
-<li>初始时每个虫子的父亲节点都是自己，且自己与自己属于同一性别:pre[i] = i,relation[i] = i</li>
+<li>初始时每个虫子的父亲节点都是自己，且自己与自己属于同一性别:pre[i] = i,relation[i] = 0</li>
 </ul>
 </li>
 <li><p>对于每一对新产生关系的虫子x和虫子y,判断他们两个是否来自同一个集合:</p>
