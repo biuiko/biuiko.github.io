@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[树的直径]]></title>
+    <url>%2F2019%2F04%2F23%2F%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84%2F</url>
+    <content type="text"><![CDATA[前几天面试的时候被问到了树中两个节点最长距离是多少。当时太菜了给出了一个时间复杂度爆炸的递归解法（不断递归左右子树），面试官也很友好的放我过了。后来想想不对！我ACM遇到过这种题！这不就是求树的直径两个dfs吗！ 所以我又去学了一下求树的直径+证明，记录一下记录一下。 什么是树的直径？树有好多好多个节点，其中一定有两个节点之间的距离大于等于任意两个节点间的距离，那么这两个节点之间的距离就是树的直径。 大致思路 从根节点R使用dfs对树进行遍历求出最远的节点A； 从A节点出发使用dfs找出距A最远的节点B，那么A,B之间的距离就是树的直径。 证明 如果根节点R是树的直径上的节点，那么A一定是树的直径的一个段点，那么A和B的距离就是树的直径 如果根节点R不是树的直径上的节点，使用反证法，假设PQ是树的直径，且PQ与AB路径有重复的交点T,因为从R出发找到的最远点是A，则RT+TA&gt;RT+TP 即TA&gt;TP，那么TA+TQ&gt;TP+TQ，即AQ&gt;PQ，与PQ是树的直径违背。 如果根节点R不是树的直径上的节点，使用反证法，假设PQ是树的直径，且PQ与AB路径没有交点,M是PQ路径上任意一点，N是AR路径上任意一点。,因为从R出发找到的最远点是A,则 RN+NA &gt; RN+NM+MP，即NA&gt;NM+MP,那么QM+MN+NA &gt; PM+MP,即QA&gt;QP,与PQ是树的直径违背。 感谢很感谢当时面试我的面试官，面试体验超级好的全程都超级认真并且真的很尊重我的各种想法。希望有机会可以共事！]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[23种设计模式——创建型模式（二）]]></title>
     <url>%2F2019%2F04%2F14%2F23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F(%E4%BA%8C)%2F</url>
     <content type="text"><![CDATA[之前写了三个创建型模式（工厂、抽象工厂、单例）。因为一篇博客里塞五个设计模式密密麻麻的实在是太丑了，所以我新开了一篇博客接着上面的叭叭。 建造者模式简介讲一个复杂对象的构建与他的表示分离，是同样的构建过程可以创建不同的标识。 其中有四个角色： Product：产品类，由多个模块组成 Builder：抽象建造者，由子类进行具体的实现,其功能是用来Build Product ConcreteBuilder：具体建造者，继承Builder，用来build具体的Product Director：导演类，相当于Leader的角色，去指挥多个模块的build顺序 场景描述iko想要搭建一个食堂（需要地板、天花板、桌子、椅子等），她知道建筑公司可以帮他搞定地板、天花板、桌子、椅子等，于是她联系了她二大爷的建筑公司，然后每天在食堂指挥建筑公司的工作顺序。 其中食堂就是Product,地板、天花板、桌子、椅子等是Product中的模块。 iko所了解的建筑公司就是Builder 她二大爷的建筑公司就是一个ConcreteBuilder iko自己扮演Director的角色负责产品中各个模块执行的顺序 C++代码实现code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149#include&lt;iostream&gt;#include&lt;string&gt;using namespace std;// personclass Product&#123;private: string hat; string clothes; string shoes;public: Product() &#123; this-&gt;hat = “”; this-&gt;clothes = “”; this-&gt;shoes = “”; &#125; ~Product(); void set_hat(string hat) &#123; this-&gt;hat = hat; &#125; void set_clothes(string clothes) &#123; this-&gt;clothes = clothes; &#125; void set_shoes(string shoes) &#123; this-&gt;shoes = shoes; &#125; void show() &#123; if(this-&gt;hat == “”) cout &lt;&lt;“I have not been constructed”&lt;&lt;endl; else &#123; cout &lt;&lt; this-&gt;hat &lt;&lt;endl; cout &lt;&lt; this-&gt;clothes &lt;&lt;endl; cout &lt;&lt; this-&gt;shoes &lt;&lt;endl; &#125; &#125;&#125;;//Virtual Builderclass AbstractBuilder&#123;public: virtual void build_hat() = 0; virtual void build_clothes() = 0; virtual void build_shoes() = 0; virtual Product get_product() = 0;&#125;;//Builder1: build cool guyclass ConcreteBuilderCoolGuy: public AbstractBuilder&#123;public: void build_hat() &#123; product.set_hat(“I am a cool guy,and I wear a white hat.”); &#125; void build_clothes() &#123; product.set_clothes(“I am a cool guy,and I wear black clothes.”); &#125; void build_shoes() &#123; product.set_shoes(“I am a cool guy,and I wear a pair of white shoes.”); &#125; Product get_product() &#123; return &amp;product; &#125;private: Product product;&#125;;//Builder2: build princessclass ConcreteBuilderPrincess: public AbstractBuilder&#123;public: void build_hat() &#123; product.set_hat(“I am a princess,and I wear a pink hat.”); &#125; void build_clothes() &#123; product.set_clothes(“I am a princess,and I wear pink clothes.”); &#125; void build_shoes() &#123; product.set_shoes(“I am a princess,and I wear a pair of pink shoes.”); &#125; Product get_product() &#123; return &amp;product; &#125;private: Product product;&#125;;//leaderclass Director&#123;private: AbstractBuilder builder;public: Director(AbstractBuilder builder) &#123; this-&gt;builder = builder; &#125; ~Director() &#123; delete this-&gt;builder; this-&gt;builder = NULL; &#125; void construct() &#123; this-&gt;builder-&gt;build_hat(); this-&gt;builder-&gt;build_clothes(); this-&gt;builder-&gt;build_shoes(); &#125; &#125;;int main()&#123; AbstractBuilder builder1 = new ConcreteBuilderCoolGuy; Director director1(builder1); Product product = builder1-&gt;get_product(); product-&gt;show(); director1.construct(); product-&gt;show(); AbstractBuilder builder2 = new ConcreteBuilderPrincess; Director director2(builder2); product = builder2-&gt;get_product(); director2.construct(); product-&gt;show(); return 0;&#125; 优缺点 优点: 封装性：客户不知道产品内部组成的细节 建造者独立，容易扩展 简单化了复杂对象的创建 缺点： 如果产品的内部变化复杂，可能会导致需要定义很多具体建造者类来实现这种变化，导致系统变得很庞大。 与抽象工厂方法的区别： 建造者模式返回的是一个组装好的完整产品，抽象工厂返回的是一系列产品组成的产品族。 抽象工厂模式中，客户端实例化工厂类。而建造者模式中客户端要通过Director来生成产品 原型模式简介使用原型实例指定待创建对象的类型，并且通过复制这个原型来创建新的对象，且新的对象原来的实例互不影响（在我看来这个就是个深拷贝？） 场景描述iko的朋友小魔仙看到iko的食堂超级赚钱他也想和iko一起赚钱，但他还不想加盟iko,于是iko在遥远的魔仙堡给他建了一个一模一样的食堂，但小魔仙以后想怎么折腾魔仙堡的时候都和iko的食堂没关系，也对iko的食堂毫无影响。 其中魔仙堡的食堂就是iko的食堂的一个克隆。 代码实现code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#include&lt;iostream&gt;#include&lt;string&gt;using namespace std;class Prototype&#123;private: string my_name;public: Prototype()&#123;&#125; virtual void show_name()=0; virtual void set_name(string name) =0; virtual Prototype clone()=0;&#125;;class ConcretePrototype1:public Prototype&#123;private: string my_name;public: ConcretePrototype1()&#123;&#125;; explicit ConcretePrototype1(const string &amp;name) :my_name(name)&#123;&#125; void show_name()&#123;cout&lt;&lt;my_name&lt;&lt;endl;&#125; void set_name(string name)&#123;my_name=name;&#125; Prototype clone() &#123; ConcretePrototype1 temp = new ConcretePrototype1; temp = this; return temp; &#125; &#125;;class ConcretePrototype2:public Prototype&#123;private: string my_name;public: ConcretePrototype2()&#123;&#125;; explicit ConcretePrototype2(const string &amp;name):my_name(name)&#123;&#125; void show_name()&#123;cout&lt;&lt;my_name&lt;&lt;endl;&#125; void set_name(string name)&#123;my_name=name;&#125; Prototype clone() &#123; ConcretePrototype2 temp = new ConcretePrototype2; temp = this; return temp; &#125; &#125;;int main()&#123; Prototype obj1 =new ConcretePrototype1(“iko”); obj1-&gt;show_name(); Prototype* obj2 = obj1-&gt;clone(); obj2-&gt;show_name(); obj2-&gt;set_name(“ooo”); obj1-&gt;show_name(); obj2-&gt;show_name(); return 0;&#125; 原型模式的优缺点 优点： 当创建对象的实例较为复杂的时候，使用原型模式可以简化对象的创建过程，通过复制一个已有的实例可以提高实例的创建效率。 可以辅助实现撤销操作，使用原型模式将对象复制一份并将其状态保存起来，以便在需要的时候使用(例如恢复到历史某一状态)。 缺点： 需要为每一个类都提供一个克隆方法，那么当基类改变它的结构的时候所有继承他的类都要重新写一下克隆方法，违反了开闭原则]]></content>
@@ -127,8 +138,8 @@
         <category>Django</category>
       </categories>
       <tags>
-        <tag>Django</tag>
         <tag>python</tag>
+        <tag>Django</tag>
       </tags>
   </entry>
   <entry>
@@ -161,8 +172,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
         <tag>数据结构</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -173,8 +184,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
         <tag>数据结构</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
