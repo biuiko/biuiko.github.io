@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[关于移动网络下传输图片的学习与思考]]></title>
+    <url>%2F2019%2F07%2F30%2F%E5%85%B3%E4%BA%8E%E7%A7%BB%E5%8A%A8%E7%BD%91%E7%BB%9C%E4%B8%8B%E4%BC%A0%E8%BE%93%E5%9B%BE%E7%89%87%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%9D%E8%80%83%2F</url>
+    <content type="text"><![CDATA[最近在看关于移动网络下传输消息的一些知识，就在博客上做一个自己的学习小笔记叭！ 这篇小博客主要从以下两个角度来思考： 如何增大图片传输成功的概率 如何判断一个图片是否传送失败 思考1：如何增大图片传输成功的概率 调整图片清晰度 在Wi-Fi/4g网络下传输原图。 在2g/3g网络下将图片清晰度降低，通过牺牲图片清晰度来提高图片传输成功的概率。 分片传输图片 将图片分片传输，当第i片数据传输失败时只需要重传第i个分片。 如果将片分的太大则每片传输失败的概率增加，且重传时需要传输的数据也是大分片的数据。如果将片分的太小: (1)每片都要携带一些网络信息，如果片数增多则网络信息也增多，对我们传输图片并没有好处;(2)需要发送的片数变多，从整体上看分片传输失败的概率也增加来。 采用动态增加分片大小的方案，第一个分片携带n个数据，第二个分片携带2n个数据。直到片的大小增加到一定程度(这个程度需要数据观察)。且在分片过程中要实时监控网络状况。 在网络环境较好的情况下可以让分片携带的数据大一些。这样即使重传数据量大的分片也不会耗时很久。 当发送最后一个分片时如果最后一个分片很小可以合并到前一个分片一起发送。 在Wi-Fi网络、缓存允许的情况下预下载图片 传输协议：使用QUIC协议 基于UDP协议所以可以解决线头堵塞 切换网络时保持连接（使用UUID标记链接） 0RTT建立连接（在第一次连接时就将一些生成密钥的信息保存在客户机，下次连接发送数据的时候带上就可） 思考2：如何判断一个图片是否传送失败 当任意一个分片发送失败时就判定图片发送失败。分片发送失败的情况为：重传的次数到达我们规定的最大重传次数 如何判断一个分片需要重传？ 采用超时传输协议。但难题是网络情况是可以骤变的，所以很难对超时定义。 设定最大网络真空时间(MNVT),如果这段时间内网络没有传输任何字节则判定本次传输分片失败需要重传。但当网络很差的情况下也可能在MNVT内传输很少量数据，可以通过再加一个字段T解决,在最大网络真空时间内如果没能发送超过T个字节则片顶本法传输分片失败。 胡七八说好像自从找完工作开始就没怎么更新博客了。小小的flag每周更新一下博客做个小小的学习总结吧！ 感谢互联网感谢我mentor让我搞出了这篇博客！]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[求数组中超过半数的数字]]></title>
     <url>%2F2019%2F04%2F26%2F%E6%B1%82%E6%95%B0%E7%BB%84%E4%B8%AD%E8%B6%85%E8%BF%87%E5%8D%8A%E6%95%B0%E7%9A%84%E6%95%B0%E5%AD%97%2F</url>
     <content type="text"><![CDATA[给出一个数组，求这个数组中超过半数的数字，非hash的O(n)做法qwq 大致思路 第一个思路排序，然后从排好序的数组中间向两面查，时间复杂度O(nlogn) 第二个思路哈希，找到第一个hash[x]大于半数的x,但当给出的数组过大的时候hash数组会开不下。 第三个思路！设置一个times和ans,再遍历过程中不断的去更新times和ans,如果times==0,ans就等于当前的num[i],如果times!=0,若ans==num[i],times++,否则times–，这样就保证如果存在这个数字那么这个数字一定是我记录的ans 代码1234567891011121314151617181920212223242526272829303132333435363738394041#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn = 1e5+10;int num[maxn];int main()&#123; int n; cin&gt;&gt;n; int ans=-1,times=0; for(int i =0 ;i&lt;n;i++) &#123; cin&gt;&gt;num[i]; if(times==0) times++,ans=num[i]; else &#123; if(ans==num[i]) times++; else times--; &#125; &#125; int cnt=0; for(int i =0 ;i&lt;n;i++) &#123; if(num[i]==ans) cnt++; &#125; if(n%2) &#123; if(cnt&gt;=(n+1)/2) cout&lt;&lt;ans&lt;&lt;endl; else cout &lt;&lt;-1&lt;&lt;endl; &#125; else &#123; if(cnt&gt;n/2) cout&lt;&lt;ans&lt;&lt;endl; else cout&lt;&lt;-1&lt;&lt;endl; &#125; return 0;&#125;]]></content>
@@ -89,8 +100,8 @@
         <category>python</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>爬虫</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -101,8 +112,8 @@
         <category>python</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>爬虫</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -113,8 +124,8 @@
         <category>python</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>爬虫</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -125,8 +136,8 @@
         <category>python</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>爬虫</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -137,8 +148,8 @@
         <category>Django</category>
       </categories>
       <tags>
-        <tag>Django</tag>
         <tag>python</tag>
+        <tag>Django</tag>
       </tags>
   </entry>
   <entry>
